@@ -51,4 +51,13 @@ public class BasePage<T> {
         WebDriverWait wait = new WebDriverWait(driver, timeoutInSeconds);
         wait.until(condition);
     }
+
+    public String getTitle() {
+        return driver.getTitle();
+    }
+
+    public String getText(By element) {
+        return find(element).getText();
+    }
+
 }

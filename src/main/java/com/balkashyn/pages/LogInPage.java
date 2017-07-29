@@ -11,6 +11,7 @@ public class LogInPage extends BasePage<LogInPage> {
     private By emailField = By.xpath("//input[@id = 'email']");
     private By passwordField = By.xpath("//input[@id = 'password']");
     private By signInButton = By.xpath("//button[@type = 'submit']");
+    private By errorMessage = By.xpath("//span[@data-automation-id = 'login-failure-help-message']");
 
     public LogInPage(WebDriver driver) {
         super(driver);
@@ -21,12 +22,19 @@ public class LogInPage extends BasePage<LogInPage> {
     }
 
     public void fillUpEmailAndPassword(String email, String password) {
+        System.out.println("Entering profile data");
         type(email, emailField);
         type(password, passwordField);
     }
 
     public ProfilePage pushSignInButton(){
+        System.out.println("Submit profile data");
         click(signInButton);
         return new ProfilePage(driver);
+    }
+
+    public String getLogInErrorMessage() {
+        waitForVisibilityOf(errorMessage, 10);
+        return getText(errorMessage);
     }
 }

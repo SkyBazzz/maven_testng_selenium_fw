@@ -1,5 +1,6 @@
 package com.balkashyn.pages.base;
 
+import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
@@ -11,9 +12,11 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class BasePage<T> {
     public WebDriver driver;
     public WebDriverWait wait;
+    protected Logger log;
 
-    protected BasePage(WebDriver driver) {
+    protected BasePage(WebDriver driver, Logger log) {
         this.driver = driver;
+        this.log = log;
         wait = new WebDriverWait(driver, 40);
     }
 

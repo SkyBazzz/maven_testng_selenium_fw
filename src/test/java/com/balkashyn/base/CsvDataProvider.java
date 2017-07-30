@@ -1,4 +1,4 @@
-package com.balkashyn.Base;
+package com.balkashyn.base;
 
 import au.com.bytecode.opencsv.CSVReader;
 import org.testng.annotations.DataProvider;

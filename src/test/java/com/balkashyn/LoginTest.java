@@ -1,8 +1,8 @@
 package com.balkashyn;
 
-import com.balkashyn.Base.BaseTest;
-//import com.balkashyn.Base.CsvDataProvider;
-import com.balkashyn.Base.CsvDataProvider;
+import com.balkashyn.base.BaseTest;
+//import com.balkashyn.base.CsvDataProvider;
+import com.balkashyn.base.CsvDataProvider;
 import com.balkashyn.pages.ProfilePage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -13,7 +13,7 @@ public class LoginTest extends BaseTest {
 
     public static final String PROFILE_NAME = "Test Test";
 
-    @Test
+    @Test(priority = 1, groups = {"positive"})
     public void validLogin() {
         String expectedTitle = "Seeker Dashboard - Profile";
         logInPage.openLogInPage();
@@ -21,7 +21,7 @@ public class LoginTest extends BaseTest {
         ProfilePage profilePage = logInPage.pushSignInButton();
         profilePage.waitForProfilePageToLoad();
 
-        System.out.println("Verifications");
+        log.info("Verifications");
 
         String actualTitle = profilePage.getTitle();
 
@@ -31,7 +31,7 @@ public class LoginTest extends BaseTest {
         Assert.assertTrue(profilePage.isCorrectProfileIsLoaded(PROFILE_NAME), "Profile name is not expected.");
     }
 
-    @Test(dataProvider = "CsvDataProvider", dataProviderClass = CsvDataProvider.class)
+    @Test(dataProvider = "CsvDataProvider", dataProviderClass = CsvDataProvider.class, priority = 2, groups = {"negative"})
     public void invalidLogin(Map<String, String> testData) {
         String expectedErrorMessage = "Email and/or password incorrect.";
         String number = testData.get("number");

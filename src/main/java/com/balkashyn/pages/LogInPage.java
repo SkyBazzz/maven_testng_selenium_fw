@@ -1,6 +1,7 @@
 package com.balkashyn.pages;
 
 import com.balkashyn.pages.base.BasePage;
+import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -13,8 +14,8 @@ public class LogInPage extends BasePage<LogInPage> {
     private By signInButton = By.xpath("//button[@type = 'submit']");
     private By errorMessage = By.xpath("//span[@data-automation-id = 'login-failure-help-message']");
 
-    public LogInPage(WebDriver driver) {
-        super(driver);
+    public LogInPage(WebDriver driver, Logger log) {
+        super(driver, log);
     }
 
     public void openLogInPage() {
@@ -22,15 +23,15 @@ public class LogInPage extends BasePage<LogInPage> {
     }
 
     public void fillUpEmailAndPassword(String email, String password) {
-        System.out.println("Entering profile data");
+        log.info("Entering profile data");
         type(email, emailField);
         type(password, passwordField);
     }
 
     public ProfilePage pushSignInButton(){
-        System.out.println("Submit profile data");
+        log.info("Submit profile data");
         click(signInButton);
-        return new ProfilePage(driver);
+        return new ProfilePage(driver, log);
     }
 
     public String getLogInErrorMessage() {

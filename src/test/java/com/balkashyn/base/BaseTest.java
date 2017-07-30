@@ -12,8 +12,8 @@ import org.testng.annotations.Parameters;
 
 public class BaseTest {
 
-    protected WebDriver driver;
-    public LogInPage logInPage;
+    private WebDriver driver;
+    protected LogInPage logInPage;
     protected Logger log;
 
     @BeforeClass(alwaysRun = true)

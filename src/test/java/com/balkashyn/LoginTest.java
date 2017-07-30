@@ -39,8 +39,7 @@ public class LoginTest extends BaseTest {
         String password = testData.get("password");
         String description = testData.get("description");
 
-
-      System.out.println("Run " + description + " test #" + number + "With email: " + email + " and password:" + password);
+        System.out.println("Run " + description + " test #" + number + "With email: " + email + " and password:" + password);
 
         logInPage.openLogInPage();
         logInPage.fillUpEmailAndPassword(email, password);

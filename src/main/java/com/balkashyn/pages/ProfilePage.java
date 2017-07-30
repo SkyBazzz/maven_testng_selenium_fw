@@ -11,7 +11,7 @@ public class ProfilePage extends BasePage<ProfilePage> {
     private By advanceSearchButton = By.xpath("//input[@type='button']");
     private By profileContactNameText = By.xpath("//h1[@class='profile-contact-name']");
 
-    public ProfilePage(WebDriver driver, Logger log) {
+    ProfilePage(WebDriver driver, Logger log) {
         super(driver, log);
     }
 
@@ -23,9 +23,6 @@ public class ProfilePage extends BasePage<ProfilePage> {
 
     public boolean isCorrectProfileIsLoaded(String correctProfileName) {
         log.info("Correct profile page is loaded");
-        if (getText(profileContactNameText).equals(correctProfileName)){
-            return true;
-        }
-        return false;
+        return getText(profileContactNameText).equals(correctProfileName);
     }
 }

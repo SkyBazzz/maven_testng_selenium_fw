@@ -10,7 +10,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class BasePage<T> {
-    public WebDriver driver;
+    protected WebDriver driver;
     public WebDriverWait wait;
     protected Logger log;
 
@@ -59,8 +59,7 @@ public class BasePage<T> {
         return driver.getTitle();
     }
 
-    public String getText(By element) {
+    protected String getText(By element) {
         return find(element).getText();
     }
-
 }

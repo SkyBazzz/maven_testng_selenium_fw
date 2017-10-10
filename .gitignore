@@ -81,5 +81,5 @@ hs_err_pid*
 
 # End of https://www.gitignore.io/api/java,intellij+iml
 .idea/
-src/main/resources/
+# src/main/resources/
 target/

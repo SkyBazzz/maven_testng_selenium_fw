@@ -1,0 +1,34 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="FirstTestSuite" parallel="tests" thread-count="2">
+    <listeners>
+        <listener class-name="com.balkashyn.base.TestListener"/>
+    </listeners>
+
+    <test name="validLogin - FF">
+        <parameter name="browser" value="firefox"/>
+        <groups>
+            <run>
+                <include name="positive"/>
+            </run>
+        </groups>
+
+        <classes>
+            <class name="com.balkashyn.LoginTest">
+            </class>
+        </classes>
+    </test>
+
+    <test name="validLogin - CH">
+        <parameter name="browser" value="chrome"/>
+        <groups>
+            <run>
+                <include name="negative"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="com.balkashyn.LoginTest">
+            </class>
+        </classes>
+    </test>
+</suite>

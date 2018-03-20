@@ -11,13 +11,13 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class BasePage<T> {
     protected WebDriver driver;
-    public WebDriverWait wait;
+    private WebDriverWait waiter;
     protected Logger log;
 
     protected BasePage(WebDriver driver, Logger log) {
         this.driver = driver;
         this.log = log;
-        wait = new WebDriverWait(driver, 40);
+        waiter = new WebDriverWait(driver, 40);
     }
 
     protected T getPage(String url) {

@@ -11,7 +11,7 @@ import java.util.Map;
 
 public class LoginTest extends BaseTest {
 
-    public static final String PROFILE_NAME = "Test Test";
+    private static final String PROFILE_NAME = "Test Test";
 
     @Test(priority = 1, groups = {"positive"})
     public void validLogin() {
@@ -27,7 +27,6 @@ public class LoginTest extends BaseTest {
 
         Assert.assertTrue(expectedTitle.equals(actualTitle),
                 "Page title is not expected.\nExpected: " + expectedTitle + "\nActual: " + actualTitle + ".");
-
         Assert.assertTrue(profilePage.isCorrectProfileIsLoaded(PROFILE_NAME), "Profile name is not expected.");
     }
 
@@ -39,7 +38,7 @@ public class LoginTest extends BaseTest {
         String password = testData.get("password");
         String description = testData.get("description");
 
-        System.out.println("Run " + description + " test #" + number + "With email: " + email + " and password:" + password);
+        log.info("Run " + description + " test #" + number + "With email: " + email + " and password:" + password);
 
         logInPage.openLogInPage();
         logInPage.fillUpEmailAndPassword(email, password);

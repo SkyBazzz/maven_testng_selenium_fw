@@ -51,8 +51,8 @@ public class BasePage<T> {
 
     private void waitFor(ExpectedCondition<WebElement> condition, Integer timeoutInSeconds) {
         timeoutInSeconds = timeoutInSeconds != null ? timeoutInSeconds : 30;
-        WebDriverWait wait = new WebDriverWait(driver, timeoutInSeconds);
-        wait.until(condition);
+        waiter = new WebDriverWait(driver, timeoutInSeconds);
+        waiter.until(condition);
     }
 
     public String getTitle() {

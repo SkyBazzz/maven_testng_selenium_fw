@@ -1,5 +1,7 @@
 package com.balkashyn.pages.base;
 
+import java.util.Objects;
+
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.StaleElementReferenceException;
@@ -17,7 +19,7 @@ public class BasePage<T> {
     protected BasePage(WebDriver driver, Logger log) {
         this.driver = driver;
         this.log = log;
-        waiter = new WebDriverWait(driver, 40);
+        waiter = new WebDriverWait(driver, 30);
     }
 
     protected T getPage(String url) {
@@ -44,13 +46,14 @@ public class BasePage<T> {
                 waitFor(ExpectedConditions.presenceOfElementLocated(locator), (timeoutInSeconds.length > 0) ? timeoutInSeconds[0] : null);
                 break;
             } catch (StaleElementReferenceException ignored) {
+                log.error(ignored.getMessage());
             }
             attempts++;
         }
     }
 
     private void waitFor(ExpectedCondition<WebElement> condition, Integer timeoutInSeconds) {
-        timeoutInSeconds = timeoutInSeconds != null ? timeoutInSeconds : 30;
+        timeoutInSeconds = !Objects.isNull(timeoutInSeconds) ? timeoutInSeconds : 30;
         waiter = new WebDriverWait(driver, timeoutInSeconds);
         waiter.until(condition);
     }

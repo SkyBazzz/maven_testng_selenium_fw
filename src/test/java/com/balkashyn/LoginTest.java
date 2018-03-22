@@ -1,7 +1,6 @@
 package com.balkashyn;
 
 import com.balkashyn.base.BaseTest;
-//import com.balkashyn.base.CsvDataProvider;
 import com.balkashyn.base.CsvDataProvider;
 import com.balkashyn.pages.ProfilePage;
 import org.testng.Assert;

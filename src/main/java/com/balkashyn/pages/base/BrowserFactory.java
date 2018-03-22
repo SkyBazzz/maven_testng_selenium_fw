@@ -10,6 +10,9 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 
 public class BrowserFactory {
 
+    private BrowserFactory() {
+    }
+
     public static WebDriver getDriver(String browser, Logger log) throws MalformedURLException {
         WebDriver driver;
         log.info("Starting: " + browser + " driver");

@@ -7,7 +7,7 @@ import org.openqa.selenium.WebDriver;
 
 public class LogInPage extends BasePage<LogInPage> {
 
-    private static final String url = "https://www.dice.com/dashboard/login";
+    private static final String URL = "https://www.dice.com/dashboard/login";
 
     private By emailField = By.xpath("//input[@id = 'email']");
     private By passwordField = By.xpath("//input[@id = 'password']");
@@ -19,7 +19,7 @@ public class LogInPage extends BasePage<LogInPage> {
     }
 
     public void openLogInPage() {
-        getPage(url);
+        getPage(URL);
     }
 
     public void fillUpEmailAndPassword(String email, String password) {
